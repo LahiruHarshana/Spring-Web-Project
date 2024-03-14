@@ -8,6 +8,7 @@ import java.io.Serializable;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-03-14, Thursday
  **/
+
 public class CustomerDTO implements Serializable {
     private String id;
     private String name;
@@ -44,5 +45,14 @@ public class CustomerDTO implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerDTO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
