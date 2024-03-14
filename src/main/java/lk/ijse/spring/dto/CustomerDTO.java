@@ -1,17 +1,19 @@
 package lk.ijse.spring.dto;
 
+import java.io.Serializable;
+
 /**
  * @author : L.H.J
  * @File: CustomerDTO
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-03-14, Thursday
  **/
-public class CustomerDTO {
+public class CustomerDTO implements Serializable {
     private String id;
     private String name;
     private String address;
 
-    public CustomerDTO() {
+    public CustomerDTO(){
     }
 
     public CustomerDTO(String id, String name, String address) {
