@@ -1,6 +1,7 @@
 package lk.ijse.spring.api;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +19,12 @@ import java.util.ArrayList;
 @RequestMapping("/customer")
 public class CustomerController {
 
-        @GetMapping
-        public String getAllCustomers(){
+        @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+        public ArrayList<CustomerDTO> getAllCustomers(){
             ArrayList<CustomerDTO> customerList = new ArrayList<>();
             customerList.add(new CustomerDTO("C001","Lahiru","Galle"));
             customerList.add(new CustomerDTO("C002","Savinda","Matara"));
             customerList.add(new CustomerDTO("C003","Theekshana","Colombo"));
-            return "All Customers";
+            return customerList;
         }
 }
