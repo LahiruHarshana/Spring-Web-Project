@@ -14,16 +14,14 @@ public class CustomerDTO implements Serializable {
     private String name;
     private String address;
 
-    private Double salary;
 
     public CustomerDTO() {
     }
 
-    public CustomerDTO(String id, String name, String address, Double salary) {
+    public CustomerDTO(String id, String name, String address) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.salary = salary;
     }
 
     public String getId() {
@@ -50,21 +48,12 @@ public class CustomerDTO implements Serializable {
         this.address = address;
     }
 
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
-    }
-
     @Override
     public String toString() {
         return "CustomerDTO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", salary=" + salary +
                 '}';
     }
 }
