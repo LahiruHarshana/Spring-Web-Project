@@ -22,9 +22,9 @@ public class CustomerController {
         @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
         public ArrayList<CustomerDTO> getAllCustomers(){
             ArrayList<CustomerDTO> customerList = new ArrayList<>();
-            customerList.add(new CustomerDTO("C001","Lahiru","Galle"));
-            customerList.add(new CustomerDTO("C002","Kamal","Matara"));
-            customerList.add(new CustomerDTO("C003","Nimal","Colombo"));
+            customerList.add(new CustomerDTO("C001","Lahiru","Galle",100000));
+            customerList.add(new CustomerDTO("C002","Kamal","Matara",200000));
+            customerList.add(new CustomerDTO("C003","Nimal","Colombo",300000));
             return customerList;
         }
 
@@ -48,6 +48,6 @@ public class CustomerController {
 
         @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
         public CustomerDTO getCustomer(@PathVariable("id") String id){
-            return new CustomerDTO(id,"Lahiru","Galle");
+            return new CustomerDTO(id,"Lahiru","Galle",100000);
         }
 }

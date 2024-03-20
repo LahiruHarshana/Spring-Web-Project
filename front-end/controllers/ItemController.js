@@ -65,117 +65,117 @@ $("#iDeleteBtn").click(() => {
 
 
 function updateItemTable() {
-    $tblItem.empty();
-
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/app/item",
-        success: function (items) {
-            for (let i in items) {
-                const id = items[i].code;
-                const name = items[i].description;
-                const price = items[i].unitPrice;
-                const Qty = items[i].qtyOnHand;
-
-                const row = `<tr><td>${id}</td><td>${name}</td><td>${price}</td><td>${Qty}</td></tr>`;
-                $tblItem.append(row);
-            }
-        },
-        error: function (xhr, status, error) {
-            alert("Failed to load items: " + error);
-        }
-    });
+    // $tblItem.empty();
+    //
+    // $.ajax({
+    //     type: "GET",
+    //     url: "http://localhost:8080/app/item",
+    //     success: function (items) {
+    //         for (let i in items) {
+    //             const id = items[i].code;
+    //             const name = items[i].description;
+    //             const price = items[i].unitPrice;
+    //             const Qty = items[i].qtyOnHand;
+    //
+    //             const row = `<tr><td>${id}</td><td>${name}</td><td>${price}</td><td>${Qty}</td></tr>`;
+    //             $tblItem.append(row);
+    //         }
+    //     },
+    //     error: function (xhr, status, error) {
+    //         alert("Failed to load items: " + error);
+    //     }
+    // });
 }
 
 function searchItem() {
-    const searchValue = $("#iSearchTxt").val();
-
-    if (searchValue.trim() === "") {
-        alert("Please enter a valid Item ID to search.");
-        return;
-    }
-
-    $.ajax({
-        type: "GET",
-        url: `http://localhost:8080/app/item/${searchValue}`,
-        success: function (item) {
-            if (item) {
-                $iNameTxt.val(item.description);
-                $iIdTxt.val(item.code);
-                $iPrice.val(item.unitPrice);
-                $iQty.val(item.qtyOnHand);
-            } else {
-                alert("Item not found.");
-            }
-        },
-        error: function (resp) {
-            alert("Failed to fetch item details");
-        }
-    });
+    // const searchValue = $("#iSearchTxt").val();
+    //
+    // if (searchValue.trim() === "") {
+    //     alert("Please enter a valid Item ID to search.");
+    //     return;
+    // }
+    //
+    // $.ajax({
+    //     type: "GET",
+    //     url: `http://localhost:8080/app/item/${searchValue}`,
+    //     success: function (item) {
+    //         if (item) {
+    //             $iNameTxt.val(item.description);
+    //             $iIdTxt.val(item.code);
+    //             $iPrice.val(item.unitPrice);
+    //             $iQty.val(item.qtyOnHand);
+    //         } else {
+    //             alert("Item not found.");
+    //         }
+    //     },
+    //     error: function (resp) {
+    //         alert("Failed to fetch item details");
+    //     }
+    // });
 }
 $("#iSearchBtn").click(searchItem);
 
 
 function saveItem() {
-    var item = {
-        code: $iIdTxt.val(),
-        description: $iNameTxt.val(),
-        unitPrice: $iPrice.val(),
-        qtyOnHand: $iQty.val(),
-    };
-
-    $.ajax({
-        method: "POST",
-        url: "http://localhost:8080/app/item",
-        contentType: "application/json",
-        async: true,
-        data: JSON.stringify(item),
-        success: function (data) {
-            alert("Item has been saved successfully");
-        },
-        error: function (data) {
-            alert("Failed to save the item");
-        },
-    });
+    // var item = {
+    //     code: $iIdTxt.val(),
+    //     description: $iNameTxt.val(),
+    //     unitPrice: $iPrice.val(),
+    //     qtyOnHand: $iQty.val(),
+    // };
+    //
+    // $.ajax({
+    //     method: "POST",
+    //     url: "http://localhost:8080/app/item",
+    //     contentType: "application/json",
+    //     async: true,
+    //     data: JSON.stringify(item),
+    //     success: function (data) {
+    //         alert("Item has been saved successfully");
+    //     },
+    //     error: function (data) {
+    //         alert("Failed to save the item");
+    //     },
+    // });
 }
 
 function updateItem() {
-    var item = {
-        code: $iIdTxt.val(),
-        description: $iNameTxt.val(),
-        unitPrice: $iPrice.val(),
-        qtyOnHand: $iQty.val(),
-    };
-
-    $.ajax({
-        method: "PUT",
-        url: "http://localhost:8080/app/item",
-        contentType: "application/json",
-        async: true,
-        data: JSON.stringify(item),
-        success: function (data) {
-            alert("Item has been updated successfully");
-        },
-        error: function (data) {
-            alert("Failed to update the item");
-        },
-    });
+    // var item = {
+    //     code: $iIdTxt.val(),
+    //     description: $iNameTxt.val(),
+    //     unitPrice: $iPrice.val(),
+    //     qtyOnHand: $iQty.val(),
+    // };
+    //
+    // $.ajax({
+    //     method: "PUT",
+    //     url: "http://localhost:8080/app/item",
+    //     contentType: "application/json",
+    //     async: true,
+    //     data: JSON.stringify(item),
+    //     success: function (data) {
+    //         alert("Item has been updated successfully");
+    //     },
+    //     error: function (data) {
+    //         alert("Failed to update the item");
+    //     },
+    // });
 }
 
 function deleteItem() {
-    var itemId = $iIdTxt.val();
-
-    $.ajax({
-        method: "DELETE",
-        url: `http://localhost:8080/app/item/${itemId}`,
-        contentType: "application/json",
-        async: true,
-        success: function (data) {
-            alert("Item has been deleted successfully");
-        },
-        error: function (xhr, status, error) {
-            alert("Failed to delete the item: " + error);
-        },
-    });
+    // var itemId = $iIdTxt.val();
+    //
+    // $.ajax({
+    //     method: "DELETE",
+    //     url: `http://localhost:8080/app/item/${itemId}`,
+    //     contentType: "application/json",
+    //     async: true,
+    //     success: function (data) {
+    //         alert("Item has been deleted successfully");
+    //     },
+    //     error: function (xhr, status, error) {
+    //         alert("Failed to delete the item: " + error);
+    //     },
+    // });
 }
 

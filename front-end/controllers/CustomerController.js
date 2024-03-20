@@ -122,8 +122,8 @@ function saveCustomer(){
 
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/app/customer",
-        contentType: JSON.stringify(newCustomer),
+        url: "http://localhost:8080/app/api/v1/customer",
+        contentType: "application/json",
         data: JSON.stringify(newCustomer),
         success: function (resp) {
             alert("Customer Saved");
@@ -143,7 +143,7 @@ function updateCustomer(){
 
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/app/customer",
+        url: "http://localhost:8080/app/api/v1/customer",
         contentType: JSON.stringify(newCustomer),
         data: JSON.stringify(newCustomer),
         success: function (resp) {
