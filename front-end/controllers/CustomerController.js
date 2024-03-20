@@ -64,7 +64,7 @@ function updateCustomerTable(){
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/app/customer",
+        url: "http://localhost:8080/app/api/v1/customer",
         success: function (customers) {
             for(let i in customers){
                 let id = customers[i].id;
