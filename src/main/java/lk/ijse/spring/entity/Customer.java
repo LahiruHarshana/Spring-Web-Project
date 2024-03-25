@@ -1,13 +1,12 @@
 package lk.ijse.spring.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @author : L.H.J
@@ -27,7 +26,7 @@ import javax.persistence.Table;
 public class Customer {
 
     @Id
-    @Column(name = "cus_id",length = 30)
+    @Column(name = "cus_id")
     private String cus_id;
     @Column(name = "name")
     private String name;
