@@ -40,7 +40,6 @@ public class CustomerController {
         @ResponseStatus(HttpStatus.NO_CONTENT)
         public boolean deleteCustomer(@PathVariable("id") String id){
             return customerService.deleteCustomer(id);
-
         }
 
         @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
