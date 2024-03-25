@@ -34,7 +34,7 @@ public class CustomerController {
             return true;
         }
 
-        @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         public boolean updateCustomer(@RequestBody CustomerDTO customer){
             System.out.println(customer);
             return true;
