@@ -27,11 +27,11 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<CustomerDTO> getAllCustomers() {
         List<Customer> all = customerRepo.findAll();
-        List<CustomerDTO> customerList = new ArrayList<>();
+        List<CustomerDTO> customerDTOS = new ArrayList<>();
         for (Customer customer : all) {
-            customerList.add(new CustomerDTO(customer.getCus_id(),customer.getName(),customer.getAddress(),customer.getSalary()));
+            customerDTOS.add(new CustomerDTO(customer.getCus_id(),customer.getName(),customer.getAddress(),customer.getSalary()));
         }
-        return customerList;
+        return customerDTOS;
     }
 
     @Override

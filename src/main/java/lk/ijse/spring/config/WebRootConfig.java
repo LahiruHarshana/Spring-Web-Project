@@ -2,6 +2,7 @@ package lk.ijse.spring.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @ComponentScan(basePackages = {"lk.ijse.spring.service","lk.ijse.spring.repositories"})
 @EnableWebMvc
+@Import({JPAConfig.class})
 public class WebRootConfig {
 
 }
