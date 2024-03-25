@@ -17,8 +17,12 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService{
     ArrayList<CustomerDTO> customerList = new ArrayList<>();
+
     @Override
     public List<CustomerDTO> getAllCustomers() {
+        customerList.add(new CustomerDTO("C00-001","Kamal","Colombo",12000));
+        customerList.add(new CustomerDTO("C00-002","Nimal","Kandy",15000));
+        customerList.add(new CustomerDTO("C00-003","Sunil","Galle",20000));
         return customerList;
     }
 

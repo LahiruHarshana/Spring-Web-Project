@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @author : L.H.J
- * @File: CustomerController
- * @mailto : lharshana2002@gmail.com
- * @created : 2024-03-14, Thursday
- **/
 
 @RestController
 @RequestMapping("api/v1/customer")
@@ -36,8 +30,9 @@ public class CustomerController {
            return customerService.saveCustomer(customer);
         }
 
-        @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+        @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
         public boolean updateCustomer(@RequestBody CustomerDTO customer){
+            System.out.println(customer.getName());
             return customerService.updateCustomer(customer);
         }
 
