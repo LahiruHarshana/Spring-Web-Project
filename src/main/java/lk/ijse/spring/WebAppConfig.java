@@ -1,5 +1,6 @@
 package lk.ijse.spring;
 
+import lk.ijse.spring.sessionFactory.SessionFactoryConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,4 +18,5 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 @EnableWebMvc
 @ComponentScan
 public class WebAppConfig{
+
 }
