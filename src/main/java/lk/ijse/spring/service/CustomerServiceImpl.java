@@ -33,27 +33,30 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void saveCustomer(CustomerDTO customerDTO) {
+    public boolean saveCustomer(CustomerDTO customerDTO) {
         customerList.add(customerDTO);
+        return true;
     }
 
     @Override
-    public void updateCustomer(CustomerDTO customerDTO) {
+    public boolean updateCustomer(CustomerDTO customerDTO) {
         for(CustomerDTO customer : customerList){
             if(customer.getId().equals(customerDTO.getId())){
                 customerList.set(customerList.indexOf(customer),customerDTO);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     @Override
-    public void deleteCustomer(String id) {
+    public boolean deleteCustomer(String id) {
         for(CustomerDTO customer : customerList){
             if(customer.getId().equals(id)){
                 customerList.remove(customer);
-                break;
+                return true;
             }
         }
+        return false;
     }
 }
