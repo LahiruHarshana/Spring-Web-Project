@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class CustomerController {
 
-    CustomerServiceImpl customerService = new CustomerServiceImpl();
+    CustomerServiceImpl customerService;
         @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
         public ArrayList<CustomerDTO> getAllCustomers(){
             ArrayList<CustomerDTO> customerList = new ArrayList<>();
