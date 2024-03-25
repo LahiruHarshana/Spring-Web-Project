@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "customer")
 
 public class Customer {
-
     @Id
     @Column(name = "cus_id")
     private String cus_id;
