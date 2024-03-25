@@ -2,6 +2,7 @@ package lk.ijse.spring.api;
 
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.service.CustomerServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 
 public class CustomerController {
 
+
+    @Autowired
     CustomerServiceImpl customerService;
         @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
         public ArrayList<CustomerDTO> getAllCustomers(){
