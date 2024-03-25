@@ -2,6 +2,7 @@ package lk.ijse.spring.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -20,9 +21,12 @@ import javax.sql.DataSource;
 public class JPAConfig {
     @Bean
     public DataSource dataSource() {
-
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.HSQL).build();
+        DriverManagerDataSource dmds = new DriverManagerDataSource();
+        dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dmds.setUrl("jdbc:mysql://localhost:3306/gdse66_spring_web?createDatabaseIfNotExist=true");
+        dmds.setUsername("root");
+        dmds.setPassword("12345678");
+        return dmds;
     }
 
     @Bean
