@@ -35,21 +35,19 @@ public class CustomerController {
         @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.CREATED)
         public boolean saveCustomer(@RequestBody CustomerDTO customer){
-            customerService.saveCustomer(customer);
-            return true;
+           return customerService.saveCustomer(customer);
         }
 
         @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         public boolean updateCustomer(@RequestBody CustomerDTO customer){
-            customerService.updateCustomer(customer);
-            return true;
+            return customerService.updateCustomer(customer);
         }
 
         @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.NO_CONTENT)
         public boolean deleteCustomer(@PathVariable("id") String id){
-            customerService.deleteCustomer(id);
-            return true;
+            return customerService.deleteCustomer(id);
+
         }
 
         @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
