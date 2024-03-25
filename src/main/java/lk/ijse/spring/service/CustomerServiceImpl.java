@@ -3,6 +3,7 @@ package lk.ijse.spring.service;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repositories.CustomerRepo;
+import lk.ijse.spring.service.util.Transformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -20,16 +21,18 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService{
 
+    @Autowired
+    Transformer transformer;
 
     @Autowired
     CustomerRepo customerRepo;
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        List<Customer> all = customerRepo.findAll();
+        List<Customer> customers = customerRepo.findAll();
         List<CustomerDTO> customerDTOS = new ArrayList<>();
-        for (Customer customer : all) {
-            customerDTOS.add(new CustomerDTO(customer.getCus_id(),customer.getName(),customer.getAddress(),customer.getSalary()));
+        for (Customer customer : customers) {
+            customerDTOS.add(transformer.fromCustomerEntity(customer));
         }
         return customerDTOS;
     }
@@ -37,14 +40,14 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public CustomerDTO getCustomerDetails(String id) {
         Customer customer = customerRepo.findById(id).get();
-        return new CustomerDTO(customer.getCus_id(),customer.getName(),customer.getAddress(),customer.getSalary());
+        return transformer.fromCustomerEntity(customer);
+
     }
 
     @Override
     public boolean saveCustomer(CustomerDTO customerDTO) {
-        Customer customer = new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary());
-        customerRepo.save(customer);
-        return true;
+         customerRepo.save(transformer.fromCustomerDTO(customerDTO));
+         return true;
     }
 
     @Override
