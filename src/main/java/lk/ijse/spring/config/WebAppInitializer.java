@@ -1,4 +1,4 @@
-package lk.ijse.spring;
+package lk.ijse.spring.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
