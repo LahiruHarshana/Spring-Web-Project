@@ -16,7 +16,6 @@ import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
-
     ArrayList<CustomerDTO> customerList = new ArrayList<>();
     @Override
     public List<CustomerDTO> getAllCustomers() {
