@@ -22,4 +22,7 @@ public class Transformer {
         return modelMapper.map(customer,CustomerDTO.class);
     }
 
+    public Customer fromCustomerDTO(CustomerDTO customerDTO){
+        return modelMapper.map(customerDTO,Customer.class);
+    }
 }
