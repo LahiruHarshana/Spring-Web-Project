@@ -6,5 +6,5 @@ package lk.ijse.spring.config;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-03-25, Monday
  **/
-public class JpaConfig {
+public class JPAConfig {
 }
