@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : L.H.J
@@ -27,37 +28,33 @@ public class CustomerController {
     @Autowired //property injection
     CustomerService customerService;
         @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-        public ArrayList<CustomerDTO> getAllCustomers(){
-            ArrayList<CustomerDTO> customerList = new ArrayList<>();
-            customerList.add(new CustomerDTO("C001","Lahiru","Galle",100000));
-            customerList.add(new CustomerDTO("C002","Kamal","Matara",200000));
-            customerList.add(new CustomerDTO("C003","Nimal","Colombo",300000));
-            return customerList;
+        public List<CustomerDTO> getAllCustomers(){
+            return customerService.getAllCustomers();
         }
 
         @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.CREATED)
         public boolean saveCustomer(@RequestBody CustomerDTO customer){
-            System.out.println(customer);
+            customerService.saveCustomer(customer);
             return true;
         }
 
         @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         public boolean updateCustomer(@RequestBody CustomerDTO customer){
-            System.out.println(customer);
+            customerService.updateCustomer(customer);
             return true;
         }
 
         @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.NO_CONTENT)
         public boolean deleteCustomer(@PathVariable("id") String id){
-            System.out.println(id);
+            customerService.deleteCustomer(id);
             return true;
         }
 
         @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.OK)
         public CustomerDTO getCustomer(@PathVariable("id") String id){
-            return new CustomerDTO(id,"Lahiru","Galle",100000);
+            return customerService.getCustomerDetails(id);
         }
 }
