@@ -42,29 +42,21 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public boolean saveCustomer(CustomerDTO customerDTO) {
-        customerList.add(customerDTO);
+        Customer customer = new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary());
+        customerRepo.save(customer);
         return true;
     }
 
     @Override
     public boolean updateCustomer(CustomerDTO customerDTO) {
-        for(CustomerDTO customer : customerList){
-            if(customer.getId().equals(customerDTO.getId())){
-                customerList.set(customerList.indexOf(customer),customerDTO);
-                return true;
-            }
-        }
-        return false;
+        Customer customer = new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary());
+        customerRepo.save(customer);
+        return true;
     }
 
     @Override
     public boolean deleteCustomer(String id) {
-        for(CustomerDTO customer : customerList){
-            if(customer.getId().equals(id)){
-                customerList.remove(customer);
-                return true;
-            }
-        }
-        return false;
+        customerRepo.deleteById(id);
+        return true;
     }
 }
