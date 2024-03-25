@@ -3,7 +3,6 @@ package lk.ijse.spring;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * @author : L.H.J
@@ -15,7 +14,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 @Configuration
 @EnableWebMvc
-@ComponentScan
+@ComponentScan(basePackages = "lk.ijse.spring.api")
 public class WebAppConfig{
 
 }
