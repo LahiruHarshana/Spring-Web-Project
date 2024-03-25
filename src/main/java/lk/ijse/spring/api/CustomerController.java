@@ -1,6 +1,7 @@
 package lk.ijse.spring.api;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,24 +30,27 @@ public class CustomerController {
         }
 
         @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+        @ResponseStatus(HttpStatus.CREATED)
         public boolean saveCustomer(@RequestBody CustomerDTO customer){
             System.out.println(customer);
             return true;
         }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+        @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         public boolean updateCustomer(@RequestBody CustomerDTO customer){
             System.out.println(customer);
             return true;
         }
 
         @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+        @ResponseStatus(HttpStatus.NO_CONTENT)
         public boolean deleteCustomer(@PathVariable("id") String id){
             System.out.println(id);
             return true;
         }
 
         @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+        @ResponseStatus(HttpStatus.OK)
         public CustomerDTO getCustomer(@PathVariable("id") String id){
             return new CustomerDTO(id,"Lahiru","Galle",100000);
         }
