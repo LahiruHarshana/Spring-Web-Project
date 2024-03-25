@@ -24,7 +24,6 @@
             <version>6.1.4</version>
         </dependency>
 
-        <!-- Jakarta Servlet API -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
