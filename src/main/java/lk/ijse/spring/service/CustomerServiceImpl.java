@@ -46,8 +46,9 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public boolean saveCustomer(CustomerDTO customerDTO) {
-         customerRepo.save(transformer.fromCustomerDTO(customerDTO));
-         return true;
+        Customer customer = new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary());
+        customerRepo.save(customer);
+        return true;
     }
 
     @Override
