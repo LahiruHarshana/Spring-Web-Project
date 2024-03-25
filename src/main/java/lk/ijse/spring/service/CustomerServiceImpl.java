@@ -1,6 +1,8 @@
 package lk.ijse.spring.service;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.List;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-03-25, Monday
  **/
+
+@Component
 public class CustomerServiceImpl implements CustomerService{
 
     ArrayList<CustomerDTO> customerList = new ArrayList<>();
