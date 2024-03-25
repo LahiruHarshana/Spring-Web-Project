@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class CustomerController {
 
 
-    @Autowired
+    @Autowired //property injection
     CustomerServiceImpl customerService;
         @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
         public ArrayList<CustomerDTO> getAllCustomers(){
