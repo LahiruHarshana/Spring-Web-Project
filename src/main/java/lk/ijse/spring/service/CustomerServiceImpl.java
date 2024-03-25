@@ -1,7 +1,6 @@
 package lk.ijse.spring.service;
 
 import lk.ijse.spring.dto.CustomerDTO;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
