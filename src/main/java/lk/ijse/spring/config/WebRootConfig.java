@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  **/
 
 @Configuration
-@ComponentScan(basePackages = "lk.ijse.spring.service")
+@ComponentScan(basePackages = {"lk.ijse.spring.service","lk.ijse.spring.repositories"})
 @EnableWebMvc
 public class WebRootConfig {
 

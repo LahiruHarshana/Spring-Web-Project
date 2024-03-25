@@ -1,6 +1,9 @@
 package lk.ijse.spring.service;
 
 import lk.ijse.spring.dto.CustomerDTO;
+import lk.ijse.spring.entity.Customer;
+import lk.ijse.spring.repositories.CustomerRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -16,24 +19,25 @@ import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
-    ArrayList<CustomerDTO> customerList = new ArrayList<>();
+
+
+    @Autowired
+    CustomerRepo customerRepo;
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        customerList.add(new CustomerDTO("C00-001","Kamal","Colombo",12000));
-        customerList.add(new CustomerDTO("C00-002","Nimal","Kandy",15000));
-        customerList.add(new CustomerDTO("C00-003","Sunil","Galle",20000));
+        List<Customer> all = customerRepo.findAll();
+        List<CustomerDTO> customerList = new ArrayList<>();
+        for (Customer customer : all) {
+            customerList.add(new CustomerDTO(customer.getCus_id(),customer.getName(),customer.getAddress(),customer.getSalary()));
+        }
         return customerList;
     }
 
     @Override
     public CustomerDTO getCustomerDetails(String id) {
-        for(CustomerDTO customerDTO : customerList){
-            if(customerDTO.getId().equals(id)){
-                return customerDTO;
-            }
-        }
-        return null;
+        Customer customer = customerRepo.findById(id).get();
+        return new CustomerDTO(customer.getCus_id(),customer.getName(),customer.getAddress(),customer.getSalary());
     }
 
     @Override

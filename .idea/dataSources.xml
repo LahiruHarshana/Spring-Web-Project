@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="hibernate_thogaKage@localhost" uuid="39ef6162-e966-4c26-ab55-196be7c7e2e6">
+    <data-source source="LOCAL" name="gdse66_spring_web@localhost" uuid="b6b82b2c-e5c6-4ea5-9800-3569068a37d7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/hibernate_thogaKage</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/gdse66_spring_web</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
