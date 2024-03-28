@@ -1,14 +1,12 @@
-package lk.ijse.spring.service;
+package lk.ijse.spring.service.custom.impl;
 
 import lk.ijse.spring.dto.CustomerDTO;
-import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.repositories.CustomerRepo;
+import lk.ijse.spring.service.custom.CustomerService;
 import lk.ijse.spring.service.util.Transformer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +17,7 @@ import java.util.List;
  **/
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     Transformer transformer;

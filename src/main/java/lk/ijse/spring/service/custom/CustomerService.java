@@ -1,4 +1,4 @@
-package lk.ijse.spring.service;
+package lk.ijse.spring.service.custom;
 
 import lk.ijse.spring.dto.CustomerDTO;
 
