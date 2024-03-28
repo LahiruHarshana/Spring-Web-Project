@@ -1,5 +1,6 @@
 package lk.ijse.spring.service.custom.impl;
 
+import jakarta.transaction.Transactional;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.repositories.CustomerRepo;
 import lk.ijse.spring.service.custom.CustomerService;
@@ -19,6 +20,7 @@ import java.util.UUID;
  **/
 
 @Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
