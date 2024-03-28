@@ -46,13 +46,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        customerDTO.setId(UtilMatter.generateID());
+        customerDTO.setCus_id(UtilMatter.generateID());
         return transformer.fromCustomerEntity(customerRepo.save(transformer.toCustomerEntity(customerDTO)));
     }
 
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
-        if (!customerRepo.existsById(customerDTO.getId())){
+        if (!customerRepo.existsById(customerDTO.getCus_id())){
             throw new RuntimeException("No customer exist for the provided id");
         }
         customerRepo.save(transformer.toCustomerEntity(customerDTO));

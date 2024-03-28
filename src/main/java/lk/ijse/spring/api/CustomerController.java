@@ -15,9 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 
 public class CustomerController {
-
-
-    @Autowired //property injection
+    @Autowired
     CustomerService customerService;
         @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
         public List<CustomerDTO> getAllCustomers(){

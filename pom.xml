@@ -74,6 +74,14 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>3.2.4</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.1.Final</version>
+        </dependency>
+
     </dependencies>
 
 </project>
