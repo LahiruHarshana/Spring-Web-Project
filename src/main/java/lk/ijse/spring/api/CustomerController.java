@@ -25,7 +25,11 @@ public class CustomerController {
 
         @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.CREATED)
-        public void saveCustomer(@Valid @RequestPart CustomerDTO customer){
+        public void saveCustomer(@Valid @RequestPart("cus_id") String cus_id,
+                                    @RequestPart("name") String name,
+                                    @RequestPart("address") String address,
+                                    @RequestPart("salary") double salary,
+                                    @RequestPart("profile_pic") String profile_pic){
             customerService.saveCustomer(customer);
 
         }
