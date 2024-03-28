@@ -7,4 +7,7 @@ package lk.ijse.spring.service.exception;
  * @created : 2024-03-28, Thursday
  **/
 public class DuplicateRecordException extends ServiceException{
+    public DuplicateRecordException(String message) {
+        super(message);
+    }
 }
