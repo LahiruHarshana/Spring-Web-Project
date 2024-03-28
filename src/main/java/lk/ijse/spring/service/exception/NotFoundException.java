@@ -7,4 +7,7 @@ package lk.ijse.spring.service.exception;
  * @created : 2024-03-28, Thursday
  **/
 public class NotFoundException extends ServiceException{
+    public NotFoundException(String message) {
+        super(message);
+    }
 }
