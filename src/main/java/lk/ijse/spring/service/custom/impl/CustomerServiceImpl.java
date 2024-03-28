@@ -37,6 +37,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomerDetails(String id) {
+
+        if (!customerRepo.existsById(id)){
+            throw new RuntimeException("No customer exist for the provided id");
+        }
         return transformer.fromCustomerEntity(customerRepo.findById(id).get());
     }
 
