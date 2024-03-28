@@ -52,11 +52,17 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
+        if (!customerRepo.existsById(customerDTO.getId())){
+            throw new RuntimeException("No customer exist for the provided id");
+        }
         customerRepo.save(transformer.toCustomerEntity(customerDTO));
     }
 
     @Override
     public void deleteCustomer(String id) {
+        if (!customerRepo.existsById(id)){
+            throw new RuntimeException("No customer exist for the provided id");
+        }
         customerRepo.deleteById(id);
     }
 }
