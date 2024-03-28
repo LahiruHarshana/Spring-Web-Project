@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "lk.ijse.spring.api")
+@ComponentScan(basePackages = {"lk.ijse.spring.api","lk.ijse.spring.advice"})
 public class WebAppConfig{
 
 }
