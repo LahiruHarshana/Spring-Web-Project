@@ -23,5 +23,7 @@ public class CustomerDTO implements Serializable {
     private String address;
 
     @NotNull(message = "Salary can not be null")
-    private Double salary; // Use Double instead of double to allow null values
+    private Double salary;
+
+    private String profile_pic;
 }

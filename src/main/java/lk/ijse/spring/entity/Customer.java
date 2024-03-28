@@ -21,4 +21,6 @@ public class Customer {
 
     @Column(name = "salary")
     private double salary;
+
+    private String profile_pic;
 }

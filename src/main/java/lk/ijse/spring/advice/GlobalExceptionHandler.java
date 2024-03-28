@@ -50,6 +50,7 @@ public class GlobalExceptionHandler {
         if (ex instanceof DuplicateRecordException) {
             errorAttributes=getCommonErrorAttribute(HttpStatus.BAD_REQUEST);
         } else if (ex instanceof NotFoundException) {
+            System.out.println("Not Found");
             errorAttributes=getCommonErrorAttribute(HttpStatus.NOT_FOUND);
         }else {
             errorAttributes=getCommonErrorAttribute(HttpStatus.INTERNAL_SERVER_ERROR);
