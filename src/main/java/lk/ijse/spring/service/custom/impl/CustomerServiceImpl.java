@@ -36,8 +36,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO getCustomerDetails(String id) {
         return transformer.fromCustomerEntity(customerRepo.findById(id).get());
-
-
     }
 
     @Override
