@@ -29,38 +29,32 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public List<CustomerDTO> getAllCustomers() {
-        List<Customer> customers = customerRepo.findAll();
-        List<CustomerDTO> customerDTOS = new ArrayList<>();
-        for (Customer customer : customers) {
-            customerDTOS.add(transformer.fromCustomerEntity(customer));
-        }
-        return customerDTOS;
+        return customerRepo.findAll().stream()
+                .map(customer -> transformer.fromCustomerEntity(customer)).toList();
     }
 
     @Override
     public CustomerDTO getCustomerDetails(String id) {
-        Customer customer = customerRepo.findById(id).get();
-        return transformer.fromCustomerEntity(customer);
+        return transformer.fromCustomerEntity(customerRepo.findById(id).get());
+
 
     }
 
     @Override
-    public boolean saveCustomer(CustomerDTO customerDTO) {
-        Customer customer = new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary());
-        customerRepo.save(customer);
-        return true;
+    public void saveCustomer(CustomerDTO customerDTO) {
+        customerRepo.save(transformer.toCustomerEntity(customerDTO));
+
     }
 
     @Override
-    public boolean updateCustomer(CustomerDTO customerDTO) {
-        Customer customer = new Customer(customerDTO.getId(),customerDTO.getName(),customerDTO.getAddress(),customerDTO.getSalary());
-        customerRepo.save(customer);
-        return true;
+    public void updateCustomer(CustomerDTO customerDTO) {
+        customerRepo.save(transformer.toCustomerEntity(customerDTO));
+
     }
 
     @Override
-    public boolean deleteCustomer(String id) {
+    public void deleteCustomer(String id) {
         customerRepo.deleteById(id);
-        return true;
+
     }
 }

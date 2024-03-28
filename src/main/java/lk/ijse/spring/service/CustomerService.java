@@ -13,8 +13,8 @@ import java.util.List;
 public interface CustomerService {
     List<CustomerDTO> getAllCustomers();
     CustomerDTO getCustomerDetails(String id);
-    boolean saveCustomer(CustomerDTO customerDTO);
-    boolean updateCustomer(CustomerDTO customerDTO);
-    boolean deleteCustomer(String id);
+    void saveCustomer(CustomerDTO customerDTO);
+    void updateCustomer(CustomerDTO customerDTO);
+    void deleteCustomer(String id);
 
 }

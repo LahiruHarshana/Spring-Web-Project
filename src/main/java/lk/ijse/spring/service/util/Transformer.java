@@ -15,14 +15,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Transformer {
-    @Autowired
-    ModelMapper modelMapper;
+    ModelMapper mapper;
 
-    public CustomerDTO fromCustomerEntity(Customer customer){
-        return modelMapper.map(customer,CustomerDTO.class);
+    public Transformer(ModelMapper mapper) {
+        this.mapper = mapper;
     }
 
-    public Customer fromCustomerDTO(CustomerDTO customerDTO){
-        return modelMapper.map(customerDTO,Customer.class);
+    public CustomerDTO fromCustomerEntity(Customer customer){
+        CustomerDTO customerDTO = mapper.map(customer, CustomerDTO.class);
+        return customerDTO;
+    }
+
+    public Customer toCustomerEntity(CustomerDTO customerDTO){
+        Customer customer = mapper.map(customerDTO, Customer.class);
+        return customer;
     }
 }
