@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author : L.H.J
@@ -39,6 +38,9 @@ public class GlobalExceptionHandler {
 
             errors.add(errorAttributes);
         }
+
+        pky.put("message","Validation Error");
+        pky.put("errors",errors);
 
         return pky;
     }
