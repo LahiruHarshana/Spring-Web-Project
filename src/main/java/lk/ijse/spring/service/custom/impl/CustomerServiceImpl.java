@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
         customerDTO.setId(UtilMatter.generateID());
-        customerRepo.save(transformer.toCustomerEntity(customerDTO));
+        return transformer.fromCustomerEntity(customerRepo.save(transformer.toCustomerEntity(customerDTO)));
 
     }
 
