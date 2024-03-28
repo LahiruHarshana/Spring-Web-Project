@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @mailto : lharshana2002@gmail.com
  * @created : 2024-03-25, Monday
  **/
-
 public interface CustomerRepo extends JpaRepository<Customer,String> {
+
 }
