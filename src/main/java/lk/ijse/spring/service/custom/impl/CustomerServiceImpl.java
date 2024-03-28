@@ -4,10 +4,12 @@ import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.repositories.CustomerRepo;
 import lk.ijse.spring.service.custom.CustomerService;
 import lk.ijse.spring.service.util.Transformer;
+import lk.ijse.spring.service.util.UtilMatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author : L.H.J
@@ -39,7 +41,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void saveCustomer(CustomerDTO customerDTO) {
+    public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
+        customerDTO.setId(UtilMatter.generateID());
         customerRepo.save(transformer.toCustomerEntity(customerDTO));
 
     }

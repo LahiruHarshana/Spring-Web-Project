@@ -28,8 +28,8 @@ public class JPAConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dmds = new DriverManagerDataSource();
         dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dmds.setUrl("jdbc:mysql://localhost:3306/gdse66_spring_web?createDatabaseIfNotExist=true");
         dmds.setUsername("root");
+        dmds.setUrl("jdbc:mysql://localhost:3306/gdse66_spring_web?createDatabaseIfNotExist=true");
         dmds.setPassword("12345678");
         return dmds;
     }
@@ -58,3 +58,12 @@ public class JPAConfig {
         return new ModelMapper();
     }
 }
+
+
+
+
+
+
+
+
+
