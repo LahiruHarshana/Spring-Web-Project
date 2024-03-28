@@ -25,7 +25,7 @@ public class CustomerController {
 
         @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
         @ResponseStatus(HttpStatus.CREATED)
-        public void saveCustomer(@Valid @RequestBody CustomerDTO customer){
+        public void saveCustomer(@Valid @RequestPart CustomerDTO customer){
             customerService.saveCustomer(customer);
 
         }
