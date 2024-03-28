@@ -36,6 +36,7 @@ public class GlobalExceptionHandler {
             errorAttributes.put("field",error.getField());
             errorAttributes.put("message",error.getDefaultMessage());
             errorAttributes.put("rejected",error.getRejectedValue());
+
             errors.add(errorAttributes);
         }
 
