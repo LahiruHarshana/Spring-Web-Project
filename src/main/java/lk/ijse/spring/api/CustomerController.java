@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Base64;
 import java.util.List;
 
 
@@ -23,15 +24,16 @@ public class CustomerController {
             return customerService.getAllCustomers();
         }
 
-        @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+        @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
         @ResponseStatus(HttpStatus.CREATED)
-        public void saveCustomer(@Valid @RequestPart("cus_id") String cus_id,
+        public CustomerDTO saveCustomer(@Valid @RequestPart("cus_id") String cus_id,
                                         @RequestPart("name") String name,
                                         @RequestPart("address") String address,
                                         @RequestPart("salary") double salary,
                                         @RequestPart("profile_pic") String profile_pic){
-            CustomerDTO customer = new CustomerDTO(cus_id, name, address, salary, profile_pic);
-            customerService.saveCustomer(customer);
+            String s = Base64.getEncoder().encodeToString(profile_pic.getBytes());
+            CustomerDTO customer = new CustomerDTO(cus_id, name, address, salary, s);
+            return customerService.saveCustomer(customer);
         }
 
         @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
