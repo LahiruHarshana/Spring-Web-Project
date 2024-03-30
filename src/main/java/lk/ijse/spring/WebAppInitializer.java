@@ -30,12 +30,11 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        String uploadDirectory = System.getProperty("java.io.tmpdir"); // Get the default temporary directory
+        String uploadDirectory = System.getProperty("java.io.tmpdir");
 
-        // Set up multipart configuration
         registration.setMultipartConfig(new MultipartConfigElement(uploadDirectory,
-                1024*1024*10, // Max file size
-                1024*1024*20, // Max request size
-                1024*1024));  // File size threshold
+                1024*1024*10,
+                1024*1024*20,
+                1024*1024));
     }
 }
