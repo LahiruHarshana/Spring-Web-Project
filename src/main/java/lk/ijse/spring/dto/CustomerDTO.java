@@ -24,6 +24,4 @@ public class CustomerDTO implements Serializable {
 
     @NotNull(message = "Salary can not be null")
     private Double salary;
-
-    private String profile_pic;
 }

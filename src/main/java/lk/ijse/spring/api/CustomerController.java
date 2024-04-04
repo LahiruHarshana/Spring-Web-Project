@@ -32,7 +32,7 @@ public class CustomerController {
                                         @RequestPart("salary") double salary,
                                         @RequestPart("profile_pic") String profile_pic){
             String s = Base64.getEncoder().encodeToString(profile_pic.getBytes());
-            CustomerDTO customer = new CustomerDTO(cus_id, name, address, salary, s);
+            CustomerDTO customer = new CustomerDTO(cus_id, name, address, salary);
             return customerService.saveCustomer(customer);
         }
 

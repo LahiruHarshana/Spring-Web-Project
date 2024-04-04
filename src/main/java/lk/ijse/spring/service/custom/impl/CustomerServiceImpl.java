@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author : L.H.J
@@ -55,11 +54,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(CustomerDTO customerDTO) {
+    public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getCus_id())){
             throw new NotFoundException("No customer exist for the provided id");
         }
         customerRepo.save(transformer.toCustomerEntity(customerDTO));
+        return customerDTO;
     }
 
     @Override

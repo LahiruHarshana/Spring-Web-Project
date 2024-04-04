@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -35,10 +36,10 @@ public class JPAConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dmds = new DriverManagerDataSource();
-        dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dmds.setUsername("root");
-        dmds.setUrl("jdbc:mysql://localhost:3306/gdse66_spring_web?createDatabaseIfNotExist=true");
-        dmds.setPassword("12345678");
+        dmds.setUrl(env.getRequiredProperty("spring.datasource.url"));
+        dmds.setUsername(env.getRequiredProperty("spring.datasource.username"));
+        dmds.setPassword(env.getRequiredProperty("spring.datasource.password"));
+        dmds.setDriverClassName(env.getRequiredProperty("spring.datasource.driverClassName"));
         return dmds;
     }
 
@@ -48,11 +49,15 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
-        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("lk.ijse.spring.entity");
-        factory.setDataSource(dataSource());
-        return factory;
+        vendorAdapter.setShowSql(true);
+        vendorAdapter.setDatabase(Database.MYSQL);
+        vendorAdapter.setDatabasePlatform(env.getRequiredProperty("spring.jpa.properties.hibernate.dialect"));
+
+        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+        emf.setJpaVendorAdapter(vendorAdapter);
+        emf.setDataSource(dataSource());
+        emf.setPackagesToScan("lk.ijse.spring.entity");
+        return emf;
     }
 
     @Bean

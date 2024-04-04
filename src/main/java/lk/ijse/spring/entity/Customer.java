@@ -21,7 +21,4 @@ public class Customer {
 
     @Column(name = "salary")
     private double salary;
-
-    @Column(columnDefinition = "LONGTEXT")
-    private String profile_pic;
 }
