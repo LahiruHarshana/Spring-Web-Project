@@ -3,6 +3,7 @@ package lk.ijse.spring.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.xml.transform.Transformer;
@@ -20,6 +21,7 @@ import javax.xml.transform.TransformerFactory;
 
 @EnableWebMvc
 @Import({JPAConfig.class})
+@PropertySource("classpath:application.properties")
 public class WebRootConfig {
 
 }

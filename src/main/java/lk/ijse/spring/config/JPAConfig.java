@@ -2,8 +2,10 @@ package lk.ijse.spring.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -24,6 +26,12 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackages = "lk.ijse.spring.repositories")
 @Configuration
 public class JPAConfig {
+    Environment env;
+
+    public JPAConfig(Environment env) {
+        this.env = env;
+    }
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dmds = new DriverManagerDataSource();
@@ -33,6 +41,8 @@ public class JPAConfig {
         dmds.setPassword("12345678");
         return dmds;
     }
+
+
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
