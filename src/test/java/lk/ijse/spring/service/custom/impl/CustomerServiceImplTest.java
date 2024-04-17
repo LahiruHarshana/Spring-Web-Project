@@ -1,5 +1,6 @@
 package lk.ijse.spring.service.custom.impl;
 
+import jakarta.validation.constraints.Null;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.entity.Customer;
 import lk.ijse.spring.service.custom.CustomerService;
@@ -34,8 +35,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 class CustomerServiceImplTest {
 
+
+
     @Autowired
     CustomerService customerService ;
+
+    public void addCustomer(){
+        CustomerDTO customerDTO = new CustomerDTO("C00111","Lahiru","Galle",1200.00);
+        CustomerDTO customer = customerService.saveCustomer(customerDTO);
+        assertNotEquals(null,customer);
+    }
     @Test
     void getAllCustomers() {
         CustomerDTO customerDTO = new CustomerDTO("C00111","Lahiru","Galle",1200.00);
@@ -59,13 +68,21 @@ class CustomerServiceImplTest {
         CustomerDTO customer = customerService.saveCustomer(customerDTO);
         assertNotEquals(null,customer);
     }
-
     @Test
     void updateCustomer() {
-        CustomerDTO customerDTO = new CustomerDTO("C111","Lahiru","Galle",1200.00);
-        CustomerDTO customer = customerService.updateCustomer(customerDTO);
-        assertThrows(NotFoundException.class,()->{
-            customerService.updateCustomer(customerDTO);
+        // Adding a customer
+        CustomerDTO customerDTO = new CustomerDTO("C00111","Lahiru","Galle",1200.00);
+        CustomerDTO addedCustomer = customerService.saveCustomer(customerDTO);
+        assertNotNull(addedCustomer);
+
+        // Updating the customer
+        CustomerDTO updatedCustomerDTO = new CustomerDTO("C00111","Lahiruuuu","Galle",1200.00);
+        CustomerDTO updatedCustomer = customerService.updateCustomer(updatedCustomerDTO);
+        assertNotNull(updatedCustomer);
+
+        // Asserting that trying to update the same customer again throws NotFoundException
+        assertThrows(NotFoundException.class, ()-> {
+            customerService.updateCustomer(updatedCustomerDTO);
         });
     }
 
